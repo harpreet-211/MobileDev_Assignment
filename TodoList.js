@@ -1,24 +1,16 @@
 import React from 'react';
-import { ScrollView, Pressable, View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 
-function ToDoList() {
+function ToDoList({ tasks }) {
   return (
     <ScrollView style={styles.scrollView}>
-      <Pressable>
-        <View style={[styles.task, styles.completed]}>
-          <Text style={styles.taskText}>Have Breakfast</Text>
-        </View>
-      </Pressable>
-      <Pressable>
-        <View style={[styles.task]}>
-          <Text style={styles.taskText}>Morning Walk</Text>
-        </View>
-      
-      
-        <View style={[styles.task, styles.completed]}>
-          <Text style={styles.taskText}>Do exercise</Text>
-        </View>
-      </Pressable>
+      {tasks.map((task, index) => (
+        <Pressable key={index}>
+          <View style={[styles.task, styles.completed]}>
+            <Text style={styles.taskText}>{task}</Text>
+          </View>
+        </Pressable>
+      ))}
     </ScrollView>
   );
 }
